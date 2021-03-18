@@ -31,7 +31,7 @@ jobs:
       - name: Merge Upstream
         uses: exions/merge-upstream@v1
         with:
-          upstream: https://github.com/dabreadman/go-web-proxy.git      # set the upstream repo
+          upstream: dabreadman/go-web-proxy      # set the upstream repo
           upstream-branch: main   # set the upstream branch to merge from
           branch: main          # set the branch to merge to
       - name: Push changes 
