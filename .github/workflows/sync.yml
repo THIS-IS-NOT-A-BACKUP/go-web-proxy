@@ -39,7 +39,6 @@ jobs:
         run: git branch
       - name: config
         run: cat .git/config
-      - run: git pull upstream main
       - name: Fetch upstream
         run: git fetch upstream
       - name: status
