@@ -5,7 +5,7 @@ name: Update fork
 env:
   UPSTREAM_URL: "https://github.com/dabreadman/go-web-proxy.git"
   MAIN_OR_MASTER: "main"
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   schedule:
     - cron: "0 18 * * 1"
@@ -20,8 +20,6 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      steps:
       # Checkout the current repo
       - uses: actions/checkout@v2
         with:
@@ -39,5 +37,5 @@ jobs:
         env:
           GITHUB_PAT: ${{ secrets.ACCESS_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      - name: Push changes 
-        run: git push 
+      - name: Push changes
+        run: git push
