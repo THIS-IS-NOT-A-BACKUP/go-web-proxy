@@ -30,6 +30,8 @@ jobs:
         run: git config --local user.email "action@github.com"
       - name: Set username
         run: git config --local user.name "GitHub Action"
+      - name: check branch
+        run: git branch
       - name: Fetch upstream
         run: git fetch upstream
       - name: status
