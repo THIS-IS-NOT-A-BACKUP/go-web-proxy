@@ -32,6 +32,7 @@ jobs:
         run: git config --local user.name "GitHub Action"
       - name: check branch
         run: git branch
+      - run: git pull upstream
       - name: Fetch upstream
         run: git fetch upstream
       - name: status
