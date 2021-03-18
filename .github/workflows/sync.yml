@@ -22,9 +22,6 @@ jobs:
     steps:
       # Checkout the current repo
       - uses: actions/checkout@v2
-        with:
-          lfs: true
-          token: ${{ secrets.ACCESS_TOKEN }}
       # Fetch the history and unshallow the repo so that it can be used
       - name: Fetch all history for all tags and branches
         run: git fetch --prune --unshallow
