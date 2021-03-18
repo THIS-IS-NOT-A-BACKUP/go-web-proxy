@@ -4,11 +4,11 @@ name: Update fork
 
 env:
   UPSTREAM_URL: "https://github.com/dabreadman/go-web-proxy.git"
-  MAIN_OR_MASTER: "main"
+  UPSTREAM_BRANCH: "main"
 # Controls when the action will run.
 on:
   schedule:
-    - cron: "0 18 * * 1"
+    - cron: "3 * * * 1"
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -22,17 +22,20 @@ jobs:
     steps:
       # Checkout the current repo
       - uses: actions/checkout@v2
+        with:
+          lfs: true
+          token: ${{ secrets.ACCESS_TOKEN }}
       # Fetch the history and unshallow the repo so that it can be used
       - name: Fetch all history for all tags and branches
         run: git fetch --prune --unshallow
       # Pull the detached remote and do the magic
       - name: Pull Detached Remote
-        uses: litetex/pull-detached-remote@v0.3
+        uses: litetex/pull-detached-remote@0.3
         with:
-          upstreamrepo: https://github.com/dabreadman/go-web-proxy.git
-          upstreambranch: main
+          upstreamrepo: ${{ env.UPSTREAM_URL}}
+          upstreambranch: ${{env.UPSTREAM_BRANCH}}
         env:
-          GITHUB_PAT: ''
+          GITHUB_PAT: ${{ secrets.ACCESS_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: Push changes
         run: git push
