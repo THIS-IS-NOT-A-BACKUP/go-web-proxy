@@ -21,18 +21,23 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      steps:
+      # Checkout the current repo
       - uses: actions/checkout@v2
-      - name: Set email
-        run: git config --local user.email "action@github.com"
-      - name: Set username
-        run: git config --local user.name "GitHub Action"
+        with:
+          lfs: true
+          token: ${{ secrets.ACCESS_TOKEN }}
+      # Fetch the history and unshallow the repo so that it can be used
       - name: Fetch all history for all tags and branches
         run: git fetch --prune --unshallow
-      - name: Merge Upstream
-        uses: exions/merge-upstream@v1
+      # Pull the detached remote and do the magic
+      - name: Pull Detached Remote
+        uses: litetex/pull-detached-remote@0.3
         with:
-          upstream: dabreadman/go-web-proxy      # set the upstream repo
-          upstream-branch: main   # set the upstream branch to merge from
-          branch: main          # set the branch to merge to
+          upstreamrepo: https://github.com/dabreadman/go-web-proxy.git
+          upstreambranch: main
+        env:
+          GITHUB_PAT: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: Push changes 
         run: git push 
