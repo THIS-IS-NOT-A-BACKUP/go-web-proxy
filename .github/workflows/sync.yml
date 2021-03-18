@@ -4,6 +4,7 @@ name: Update fork
 
 env:
   UPSTREAM_URL: "https://github.com/dabreadman/go-web-proxy.git"
+  MAIN_OR_MASTER: "main"
 # Controls when the action will run. 
 on:
   schedule:
@@ -30,6 +31,6 @@ jobs:
       - name: Fetch upstream
         run: git fetch upstream
       - name: Merge upstream
-        run: git merge upstream/master --allow-unrelated-histories
+        run: git merge upstream/${{ env.MAIN_OR_MASTER }} --allow-unrelated-histories
       - name: Push changes 
         run: git push 
