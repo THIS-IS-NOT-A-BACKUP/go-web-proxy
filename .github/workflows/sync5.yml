@@ -11,21 +11,14 @@ on:
     - cron: '30 * * * *'
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    
     steps:
-      # Checkout the current repo
-      - uses: actions/checkout@v2
-      - run: printenv
       - name: GitHub Sync to Upstream Repository
         uses: dabreadman/sync-upstream-repo@t0.1.2.b.6
         with: 
-          upstream_repo: https://github.com/dabreadman/go-web-proxy.git
-          branch: main
-          token: ${{ secrets.GITHUB_TOKEN}}
+          upstream_repo: ${{ env.UPSTREAM_URL }}
+          branch: ${{ env.UPSTREAM_BRANCH }}
+          token: ${{ secrets.GITHUB_TOKEN }}
