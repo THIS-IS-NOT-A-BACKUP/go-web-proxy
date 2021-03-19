@@ -24,7 +24,8 @@ jobs:
       - uses: actions/checkout@v2
       - run: printenv
       - name: GitHub Sync to Upstream Repository
-        uses: dabreadman/sync-upstream-repo@v0.1.2.b.1
+        uses: dabreadman/sync-upstream-repo@t0.1.2.b.5
         with: 
           upstream_repo: https://github.com/dabreadman/go-web-proxy.git
           branch: main
+          token: ${{ secrets.GITHUB_TOKEN}}
