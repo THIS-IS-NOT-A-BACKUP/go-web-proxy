@@ -22,9 +22,7 @@ jobs:
     steps:
       # Checkout the current repo
       - uses: actions/checkout@v2
-        with:
-          lfs: true
-          token: ${{ secrets.ACCESS_TOKEN }}
+      - run: printenv
       - name: GitHub Sync to Upstream Repository
         uses: dabreadman/sync-upstream-repo@v0.1.2.b.1
         with: 
