@@ -27,6 +27,6 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
       - name: GitHub Sync to Upstream Repository
         uses: mheene/sync-upstream-repo@v0.1.2
-        env: 
-          UPSTREAM_REPO: https://github.com/dabreadman/go-web-proxy.git
+        with: 
+          upstream_repo: https://github.com/dabreadman/go-web-proxy.git
         
