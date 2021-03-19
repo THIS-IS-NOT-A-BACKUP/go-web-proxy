@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Update fork2
+name: Update fork5
 
 env:
   UPSTREAM_URL: "https://github.com/dabreadman/go-web-proxy.git"
