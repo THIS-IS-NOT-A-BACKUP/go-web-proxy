@@ -26,7 +26,7 @@ jobs:
           lfs: true
           token: ${{ secrets.ACCESS_TOKEN }}
       - name: GitHub Sync to Upstream Repository
-        uses: dabreadman/sync-upstream-repo@v0.1.2.b.1
+        uses: dabreadman/sync-upstream-repo@y0.1.2.b.1
         with: 
           upstream_repo: https://github.com/dabreadman/go-web-proxy.git
         
