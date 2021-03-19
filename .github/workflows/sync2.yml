@@ -28,4 +28,4 @@ jobs:
       - name: GitHub Sync to Upstream Repository
         uses: mheene/sync-upstream-repo@v0.1.2
         with:
-          upstream_repo: ${{ secrets.UPSTREAM_URL }}
+          UPSTREAM_REPO: ${{ secrets.UPSTREAM_URL }}
